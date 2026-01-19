@@ -1,0 +1,34 @@
+<mvc:View
+    controllerName="native.integrations.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <Page id="page" title="{i18n>appTitle}">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Label text="Select AI Provider" labelFor="providerSelect"/>
+                <Select id="providerSelect" width="100%">
+                    <core:Item key="openai" text="OpenAI"/>
+                    <core:Item key="vertex" text="Google Vertex AI"/>
+                    <core:Item key="bedrock" text="Amazon Bedrock"/>
+                    <core:Item key="langchain" text="LangChain"/>
+                </Select>
+
+                <Label text="Enter Prompt" labelFor="promptInput" class="sapUiSmallMarginTop"/>
+                <TextArea id="promptInput" width="100%" rows="5" placeholder="Type your prompt here..."/>
+
+                <Button text="Run Analysis" press=".onRunValues" type="Emphasized" class="sapUiSmallMarginTop"/>
+
+                <Panel headerText="Response" class="sapUiSmallMarginTop" expandable="true" expanded="true">
+                    <content>
+                        <Text id="responseText" text="{/responseResult}"/>
+                        <BusyIndicator id="busyIndicator" visible="false"/>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
